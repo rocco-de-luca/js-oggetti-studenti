@@ -1,2 +1,25 @@
-
+body{
+    padding: 30px;
+    font-family: sans-serif;
+}
   
+.message{
+    width: 400px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+.message-sent{
+    background-color: lightgreen;
+}
+
+.message-received{
+    background-color: lightsalmon;
+}
+
+.message .message-time{
+text-align: right;
+font-size: 12px;
+}

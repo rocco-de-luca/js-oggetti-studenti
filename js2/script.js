@@ -5,32 +5,56 @@
 *********************/
 
 $(document).ready(function () {
+
+    //refs
+    var input = $(".mess.input");
+    var button = $(".mess-btn");
+    var chat = $(".chat");
+
     //ottieni html da usare
-    var source = $("entry-template").html();
+    var source = $("#message-template").html();
+    //console.log(source);
+    
     //genera una utility handlebar
     var template = Handlebars.compile(source);
-    //console.log(typeof template);
+    //console.log(typeof(template));
 
-    /*  var data = {
-    title: "my single post",
-    body: "lorem ipsum" 
-    }
-
-    var html = template(data);
-    console.log(html);
-
-    $('.articles').append(html);
-*/
-    for (var i = 0; i < 10; i++) {
+    //inserisci nuovo mess
+    button.click(function() {
+        var message = input.val();
+      // console.log(message);
+    
+        //dati dinamici per template handlerbars
         var data = {
-            title: "post numero" + (i + 1),
-            body: "this is the post with the number" + (i + 1)
-        }
+            text: '.message',
+            time: '15:15',
+            userClass: 'sent'
+        };
+    
 
         var html = template(data);
-        console.log(html);
+        //console.log(html);
 
-        $('.articles').append(html);
-    }
+        chat.append(html);
 
+        input.val('');
+
+        //risposta automatica
+        setTimeout(function(){
+            var data = {
+                text: "ok bro",
+                time: '15:16',
+                userClass: 'received'
+            };
+
+            var html = template(data);
+
+            chat.append(html);
+
+        }, 1000);
+
+
+
+    });
+    
 });
