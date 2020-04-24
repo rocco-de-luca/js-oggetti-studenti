@@ -5,7 +5,6 @@
 *********************/
 
 $(document).ready(function () {
-
     //refs
     var input = $(".mess.input");
     var button = $(".mess-btn");
@@ -18,6 +17,64 @@ $(document).ready(function () {
     //genera una utility handlebar
     var template = Handlebars.compile(source);
     //console.log(typeof(template));
+
+    //ottengo html 
+    var source = $('#message-template').html();
+    var template = Handlebars.compile(source);
+
+    var chat = [
+        {
+            testo: 'ciao, come stai?',
+            tempo: '10:00'
+        },
+        {
+            testo: 'bene, grazie tu?',
+            tempo: '10:05'
+        },
+        {
+            testo: 'bene',
+            tempo: '10:10'
+        },
+    ];
+    
+    for (var i = 0; i < chat.length; i++) {
+        var mess = chat[i];
+        var data = {
+            testo: ('.mess'),
+            tempo: ('.time'),
+            userClass: 'sent'
+        }
+        var output = template(data);
+        $('.chat').append(output);
+    }
+
+    //invio alla pressione di Enter
+    input.keypress(function (e) {
+
+        if (e.which == 13) {
+            aggiungiChat();
+        }
+
+    });
+    //invio al click del bottone
+    button.click(function () {
+
+        addChat();
+    });
+
+    function oraAttuale() {
+        var data = new Date();
+
+        var ora = data.getHours();
+        var minuti = data.getMinutes();
+
+        if (minuti < 10) {
+            minuti = '0' + minuti;
+        }
+
+        return ora + ':' + minuti;
+
+    }
 
     //inserisci nuovo mess
     button.click(function () {
@@ -52,30 +109,10 @@ $(document).ready(function () {
 
     }, 1000);
 
-    for (var i = 0; i < 3; i++) {
-        var arrayObjChat = [
-
-            {
-                testo: 'ciao, come stai?' + (i + 1),
-                tempo: '15:15' + (i + 1)
-            },
-            {
-                testo: 'bene grazie, tu?' + (i + 1),
-                tempo: '15:16' + (i + 1),
-            },
-            {
-                testo: 'bene grazie' + (i + 1),
-                tempo: '15:17'
-            },
-        ];
-
-        var html = template(arrayObjChat);
-
-        $('.chat').append(arraiObjChat);
-    }
-
-
 });
+
+
+
 
 
 
