@@ -10,17 +10,11 @@ $(document).ready(function () {
     var button = $(".mess-btn");
     var chat = $(".chat");
 
-    //ottieni html da usare
-    var source = $("#message-template").html();
-    //console.log(source);
-
+    //ottengo html 
+    var source = $('#message-template').html();
     //genera una utility handlebar
     var template = Handlebars.compile(source);
     //console.log(typeof(template));
-
-    //ottengo html 
-    var source = $('#message-template').html();
-    var template = Handlebars.compile(source);
 
     var chat = [
         {
