@@ -17,11 +17,14 @@
   </div>
 
   <main class="chat"></main>
+  <main class="articles"></main>
 
   <script id="message-template" type="text/x-handlebars-template">
      <div class="message{{ userClass }}">
        <div class="message-text">{{ text }}</div>
        <div class="message-time">{{ time}}</div>
+       <p>{{testo}}</p>
+       <p>{{tempo}}</p>
      </div>
     </script>
 
@@ -30,8 +33,8 @@
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
-  <script src="js/main.js"></script>
-  <!--<script src="js2/script.js"></script>-->
+  <!--<script src="js/main.js"></script>-->
+  <script src="handlebars/script.js"></script>
 </body>
 
 </html>
