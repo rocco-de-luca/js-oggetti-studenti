@@ -3,6 +3,15 @@
 *    handlebars     *
 *       chat        *
 *********************/
+/**
+ *  Esercizio di oggi: Array e oggetti (chat con Handlebars)
+Descrizione:
+Estendere la chat fatta con handlebars inserendo i messaggi iniziali, 
+visibili al caricamento della pagina, generati da un array di oggetti.
+Gli oggetti conterranno proprietà come testo e orario
+Usiamo Handlebars per la generazione anche di questi messaggi, 
+come avete fatto ieri per i messaggi inseriti dall’utente
+ */
 
 $(document).ready(function () {
     //refs
@@ -16,7 +25,7 @@ $(document).ready(function () {
     var template = Handlebars.compile(source);
     //console.log(typeof(template));
 
-    var chat = [
+    var mess = [
         {
             testo: 'ciao, come stai?',
             tempo: '10:00'
@@ -30,23 +39,17 @@ $(document).ready(function () {
             tempo: '10:10'
         },
     ];
-    
-    for (var i = 0; i < chat.length; i++) {
-        var mess = chat[i];
-        var data = {
-            testo: ('.mess'),
-            tempo: ('.time'),
-            userClass: 'sent'
-        }
-        var output = template(data);
-        $('.chat').append(output);
-    }
 
+    for (var i = 0; i < mess.length; i++) {
+        var elementMess = $(".message-template p").clone();
+        elementMess.prepend(mess.lenght[i]);
+        chat.append(elementMess);
+    }
     //invio alla pressione di Enter
     input.keypress(function (e) {
 
         if (e.which == 13) {
-            aggiungiChat();
+            addChat();
         }
 
     });
