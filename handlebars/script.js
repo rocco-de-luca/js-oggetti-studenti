@@ -47,9 +47,7 @@ $(document).ready(function () {
     for (var i = 0; i < mess.length; i++) {
         var messaggi= template(mess[i]);
         console.log(messaggi);
-        chat.append(messaggi)
-
-          
+        chat.append(messaggi)     
     }
 
     // inserisci nuovo messaggio
