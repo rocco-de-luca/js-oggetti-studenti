@@ -24,6 +24,19 @@ text-align: right;
 font-size: 12px;
 }
 
-.message-template{
+#message-template{
     display: none;
 }
+
+.tempo{
+    text-align: right;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+

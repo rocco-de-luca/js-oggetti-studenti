@@ -14,102 +14,79 @@ come avete fatto ieri per i messaggi inseriti dall’utente
  */
 
 $(document).ready(function () {
-    //refs
-    var input = $(".mess.input");
+    // refs
+    var input = $(".mess-input");
     var button = $(".mess-btn");
     var chat = $(".chat");
 
-    //ottengo html 
-    var source = $('#message-template').html();
-    //genera una utility handlebar
+    var source = $("#message-template").html();
+    //console.log(source);
+
+    // utility hundlebars
     var template = Handlebars.compile(source);
-    //console.log(typeof(template));
+    //console.log(typeof template);
 
     var mess = [
         {
             testo: 'ciao, come stai?',
-            tempo: '10:00'
+            tempo: '10:00',
+            userClass: "message-sent"
         },
         {
             testo: 'bene, grazie tu?',
-            tempo: '10:05'
+            tempo: '10:05',
+            userClass: "message-received"
         },
         {
             testo: 'bene',
-            tempo: '10:10'
+            tempo: '10:10',
+            userClass: "message-sent"
         },
     ];
 
     for (var i = 0; i < mess.length; i++) {
-        var elementMess = $(".message-template p").clone();
-        elementMess.prepend(mess.lenght[i]);
-        chat.append(elementMess);
-    }
-    //invio alla pressione di Enter
-    input.keypress(function (e) {
+        var messaggi= template(mess[i]);
+        console.log(messaggi);
+        chat.append(messaggi)
 
-        if (e.which == 13) {
-            addChat();
-        }
-
-    });
-    //invio al click del bottone
-    button.click(function () {
-
-        addChat();
-    });
-
-    function oraAttuale() {
-        var data = new Date();
-
-        var ora = data.getHours();
-        var minuti = data.getMinutes();
-
-        if (minuti < 10) {
-            minuti = '0' + minuti;
-        }
-
-        return ora + ':' + minuti;
-
+          
     }
 
-    //inserisci nuovo mess
+    // inserisci nuovo messaggio
     button.click(function () {
-        var message = input.val();
-        // console.log(message);
-    });
-    //dati dinamici per template handlerbars
-    var data = {
-        text: '.message',
-        time: '15:15',
-        userClass: 'sent'
-    };
+        var message = input.val().trim();
+        console.log(message);
 
-    var html = template(data);
-    //console.log(html);
-
-    chat.append(html);
-
-    input.val('');
-
-    //risposta automatica
-    setTimeout(function () {
+        // dati dinamici per template handelbars
         var data = {
-            text: "ok bro",
-            time: '15:16',
-            userClass: 'received'
+            text: message,
+            time: "15:15",
+            userClass: "message-sent"
         };
 
         var html = template(data);
+        console.log(html);
 
-        chat.append(html);
+        chat.append(html)
 
-    }, 1000);
+        input.val("");
+
+        // risposta automatica
+
+        setTimeout(function () {
+            var data = {
+                text: "ok bro",
+                time: "15:16",
+                userClass: "message-received"
+            };
+
+            var html = template(data);
+            console.log(html);
+
+            chat.append(html)
+
+        }, 1000);
+
+    });
 
 });
-
-
-
-
-
-

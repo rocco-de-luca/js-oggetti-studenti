@@ -19,11 +19,11 @@
   <main class="chat"></main>
 
   <script id="message-template" type="text/x-handlebars-template">
-     <div class="message{{ userClass }}">
+     <div class="message {{ userClass}}">
        <div class="message-text">{{ text }}</div>
        <div class="message-time">{{ time}}</div>
-       <p>{{testo}}</p>
-       <p>{{tempo}}</p>
+       <div class="testo">{{testo}}</div>
+       <div class="tempo">{{tempo}}</div>
      </div>
     </script>
 
